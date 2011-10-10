@@ -30,13 +30,12 @@ public class EffectManager
 	}
 	
 	public void addEffect(Effect effect)
-	{
-		this._effects.add(effect);
-		
+	{		
 		if(effect.isInstant())
 			EffectAreaManager.Instance().doEffectOverArea(effect);
 		
-		this._removeDoneEffects();
+		if(!effect.isDone())
+			this._effects.add(effect);
 	}
 	
 	public void updateEffects()
